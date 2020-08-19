@@ -14,7 +14,7 @@
         var lon, lat, weatherType, weatherIcon, weatherIconUrl, temp, feelsLikeTemp, tempMin, tempMax, pressure, humidity, visibilityM, visibilityKM, windSpeed, cloudiness, timeOfCalculationUnix, sunriseUnix, sunsetUnix, timeOfCalculation, sunrise, sunset, city, country;
 
         const apiCall = async () => {
-            const response = await fetch('http://api.openweathermap.org/data/2.5/weather?q=boom&units=metric&appid=a1b0b1d1ba758ad4a0971f19cc475c39'); //make api call
+            const response = await fetch('http://api.openweathermap.org/data/2.5/weather?q=boom&units=metric&appid='); //make api call
             const myJson = await response.json(); //extract JSON from the http response
 
             lon = myJson.coord.lon;
