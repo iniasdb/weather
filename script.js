@@ -18,14 +18,17 @@ var weatherIcon,
   country;
 
 const apiCall = async (city) => {
+  //city to display weather information from
   var citySearch = city;
+  
   const response = await fetch(
     "http://api.openweathermap.org/data/2.5/weather?q=" +
       citySearch +
-      "&units=metric&appid="
+      "&units=metric&appid=/*key here*/"
   ); //make api call
   const myJson = await response.json(); //extract JSON from the http response
 
+  //assign variables
   weatherIcon = myJson.weather[0].icon;
   temp = Math.round(myJson.main.temp);
   feelsLikeTemp = Math.round(myJson.main.feels_like);
@@ -44,6 +47,7 @@ const apiCall = async (city) => {
   city = myJson.name;
   country = myJson.sys.country;
 
+  //print to html
   document.getElementById("location").innerHTML = city + " " + country;
   document.getElementById("temp").innerHTML = temp + "°C";
   document.getElementById("fl").innerHTML = feelsLikeTemp + "°C";
@@ -55,6 +59,7 @@ const apiCall = async (city) => {
   document.getElementById("sunrise").innerHTML = sunrise;
   document.getElementById("sunset").innerHTML = sunset;
 
+  //change background by weathertype
   switch (weatherIcon) {
     case "01d":
       document.getElementById("bg").style.backgroundImage =
@@ -135,7 +140,6 @@ const apiCall = async (city) => {
 };
 
 function convertUnix(timestamp) {
-  //to miliseconds
   var date = new Date(timestamp * 1000);
   var hours = date.getHours();
   var minutes = "0" + date.getMinutes();
@@ -146,6 +150,7 @@ function convertUnix(timestamp) {
 }
 
 function changeCity(x) {
+  //if button pressed x=== true
   if (x || event.key === "Enter") {
     var value = document.getElementById("city").value;
     document.getElementById("city").value = "";
