@@ -1,2 +1,2 @@
 # weather
-![preview](https://imgur.com/bZL1OWW)
+![preview](preview.jpg)
